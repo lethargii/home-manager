@@ -13,9 +13,14 @@
 
   outputs =
     { nixpkgs, home-manager, nix-flatpak, ... }:
+    let
+      arch = builtins.getEnv "ARCH";
+      pkgs = nixpkgs.legacyPackages.${arch};
+      user = builtins.getEnv "USER";
+    in
     {
-      homeConfigurations."lethargii" = home-manager.lib.homeManagerConfiguration {
-				pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
+				inherit pkgs;
 				extraSpecialArgs = { inherit nix-flatpak; };
         modules = [
 					./home.nix

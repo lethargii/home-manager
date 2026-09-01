@@ -3,8 +3,8 @@
 	imports = [
 		nix-flatpak.homeManagerModules.nix-flatpak
 	];
-  home.username = "lethargii";
-  home.homeDirectory = "/home/lethargii";
+  home.username = builtins.getEnv "USER";
+  home.homeDirectory = "/home/${config.home.username}";
 
   home.stateVersion = "26.05";
 
