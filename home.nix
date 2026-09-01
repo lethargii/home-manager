@@ -12,34 +12,18 @@
 
   home.packages = with pkgs; [
     # GUI
+    geary
+    papers
+    foliate
     firefox
+	] ++ lib.optionals (builtins.getEnv "DESKTOP" == "1") [
 		mullvad-browser
     tor-browser
-    papers
     cavasik
-    foliate
-    geary
 		seahorse
 		baobab
 		gnome-disk-utility
-	] ++ lib.optionals (builtins.getEnv "GAMING" == "1") [
-		# Games
-		heroic
-		openmw
-		highscore
-		melonds
-		protontricks
-    prismlauncher
-	] ++ lib.optionals (builtins.getEnv "RIPPING" == "1") [
-		# Ripping
-    eartag
-	] ++ lib.optionals (builtins.getEnv "TABLET" == "1") [
-		# Tablet
-    pinta
-    rnote
-	] ++ [
     vesktop
-    ghostty
     vscodium
     eyedropper
     onlyoffice-desktopeditors
@@ -48,12 +32,39 @@
     gnome-online-accounts-gtk
     zrythm
 		(bottles.override { removeWarningPopup = true;})
-    # TUI
+	] ++ lib.optionals (builtins.getEnv "GAMING" == "1") [
+		## Games
+		heroic
+		openmw
+		highscore
+		melonds
+		protontricks
+    prismlauncher
+	] ++ lib.optionals (builtins.getEnv "RIPPING" == "1") [
+		## Ripping
+    eartag
+	] ++ lib.optionals (builtins.getEnv "TABLET" == "1") [
+		## Tablet
+    pinta
+    rnote
+	] ++ [
+    # TERMINAL
+    ghostty
+		## TUI
     tmux
     fish
     fastfetch
     git
 		github-cli
+		asciiquarium
+	] ++ lib.optionals (builtins.getEnv "DESKTOP" == "1") [
+    ## CLI
+		nix-index
+    unzip
+    postgresql
+		rsync
+		imagemagick
+		e2fsprogs
     # Interpreters and compilers
     python3
     gcc
@@ -63,21 +74,12 @@
     cargo
     dotnet-sdk_10
     bun
-    # CLI
-		nix-index
-    unzip
-		asciiquarium
-    postgresql
-		rsync
-		imagemagick
-		e2fsprogs
   ];
 
   home.file = {
   };
 
   home.sessionVariables = {
-    # EDITOR = "emacs";
   };
 
   programs = {
@@ -94,8 +96,9 @@
 			{ name = "modmanager-origin"; location = "https://chrisdkn.github.io/Amethyst-Mod-Manager/amethyst.flatpakrepo"; }
 		];
 		packages = [
-			"com.kagi.Orion"
       "page.codeberg.M23Snezhok.Vinyl"
+      "org.gtk.Gtk3theme.adw-gtk3"
+      "org.gtk.Gtk3theme.adw-gtk3-dark"
 		] ++ lib.optionals (builtins.getEnv "RIPPING" == "1") [
       "io.github.dzheremi2.lrcmake-gtk"
       "nl.andreasknoben.Laser"
@@ -103,9 +106,10 @@
 			"modmanager-origin:app/io.github.Amethyst.ModManager"
       "io.github.MakovWait.Godots"
 		] ++ lib.optionals (builtins.getEnv "DESKTOP" == "1") [
+			"com.kagi.Orion"
       "net.trowell.kotoba"
-      "org.gtk.Gtk3theme.adw-gtk3"
-      "org.gtk.Gtk3theme.adw-gtk3-dark"
+		] ++ lib.optionals (builtins.getEnv "PHONE" == "1") [
+			"io.github.erenseymen.android-tv-remote"
 		];
 		overrides.settings = {
 			global.Context = {
