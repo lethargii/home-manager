@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "flatpaks": {
-      "locked": {
-        "lastModified": 1786455112,
-        "narHash": "sha256-rwDASpAiEERXivdevBH4QXyhRHgBPp2c/Av4QXtFKMM=",
-        "owner": "in-a-dil-emma",
-        "repo": "declarative-flatpak",
-        "rev": "a1173e04ef4e192960d724a9ad806bba25b5767e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "in-a-dil-emma",
-        "ref": "latest",
-        "repo": "declarative-flatpak",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -33,6 +17,22 @@
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "nix-flatpak": {
+      "locked": {
+        "lastModified": 1767983141,
+        "narHash": "sha256-7ZCulYUD9RmJIDULTRkGLSW1faMpDlPKcbWJLYHoXcs=",
+        "owner": "gmodena",
+        "repo": "nix-flatpak",
+        "rev": "440818969ac2cbd77bfe025e884d0aa528991374",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gmodena",
+        "ref": "latest",
+        "repo": "nix-flatpak",
         "type": "github"
       }
     },
@@ -54,8 +54,8 @@
     },
     "root": {
       "inputs": {
-        "flatpaks": "flatpaks",
         "home-manager": "home-manager",
+        "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs"
       }
     }

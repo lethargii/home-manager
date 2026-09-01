@@ -1,8 +1,7 @@
-{ config, pkgs, lib, flatpaks, ... }:
-
+{ config, pkgs, lib, nix-flatpak, ... }:
 {
 	imports = [
-		flatpaks.homeModules.default
+		nix-flatpak.homeManagerModules.nix-flatpak
 	];
   home.username = "lethargii";
   home.homeDirectory = "/home/lethargii";
@@ -23,16 +22,18 @@
 		seahorse
 		baobab
 		gnome-disk-utility
-	] ++ lib.optionals (builtins.getEnv "HOSTNAME" == "spectre") [
+	] ++ lib.optionals (builtins.getEnv "GAMING" == "1") [
 		# Games
-			##heroic
+		heroic
 		openmw
 		highscore
 		melonds
 		protontricks
     prismlauncher
+	] ++ lib.optionals (builtins.getEnv "RIPPING" == "1") [
 		# Ripping
     eartag
+	] ++ lib.optionals (builtins.getEnv "TABLET" == "1") [
 		# Tablet
     pinta
     rnote
@@ -84,28 +85,30 @@
 	};
 
 	services.flatpak = {
-		enable = true;
-		remotes = {
-			"flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
-      "flathub-beta" = "https://dl.flathub.org/beta-repo/flathub-beta.flatpakrepo";
-			"orion-beta" = "https://flatpak.orionbrowser.com/orion-beta.flatpakrepo";
-			"modmanager-origin" = "https://chrisdkn.github.io/Amethyst-Mod-Manager/amethyst.flatpakrepo";
-		};
-		packages = [
-			"orion-beta:app/com.kagi.Orion//stable"
-      "flathub:app/page.codeberg.M23Snezhok.Vinyl//stable"
-		] ++ lib.optionals (builtins.getEnv "HOSTNAME" == "spectre") [
-      "flathub:app/io.github.dzheremi2.lrcmake-gtk//stable"
-      "flathub:app/nl.andreasknoben.Laser//stable"
-			"modmanager-origin:app/io.github.Amethyst.ModManager//stable"
-      "flathub:app/io.github.MakovWait.Godots//stable"
-		] ++ [
-      "flathub:app/net.trowell.kotoba//stable"
-      "flathub:app/org.gtk.Gtk3theme.adw-gtk3//stable"
-      "flathub:app/org.gtk.Gtk3theme.adw-gtk3-dark//stable"
+		update.onActivation = true;
+		uninstallUnmanaged = true;
+		remotes = [
+			{ name = "flathub"; location = "https://dl.flathub.org/repo/flathub.flatpakrepo"; }
+			{ name = "flathub-beta"; location = "https://dl.flathub.org/beta-repo/flathub-beta.flatpakrepo"; }
+			{ name = "orion-beta"; location = "https://flatpak.orionbrowser.com/orion-beta.flatpakrepo"; }
+			{ name = "modmanager-origin"; location = "https://chrisdkn.github.io/Amethyst-Mod-Manager/amethyst.flatpakrepo"; }
 		];
-		overrides = {
-			"global".Context = {
+		packages = [
+			"com.kagi.Orion"
+      "page.codeberg.M23Snezhok.Vinyl"
+		] ++ lib.optionals (builtins.getEnv "RIPPING" == "1") [
+      "io.github.dzheremi2.lrcmake-gtk"
+      "nl.andreasknoben.Laser"
+		] ++ lib.optionals (builtins.getEnv "GAMING" == "1") [
+			"modmanager-origin:app/io.github.Amethyst.ModManager"
+      "io.github.MakovWait.Godots"
+		] ++ lib.optionals (builtins.getEnv "DESKTOP" == "1") [
+      "net.trowell.kotoba"
+      "org.gtk.Gtk3theme.adw-gtk3"
+      "org.gtk.Gtk3theme.adw-gtk3-dark"
+		];
+		overrides.settings = {
+			global.Context = {
 				filesystems = [
 					"xdg-config/gtk-3.0/gtk.css"
 					"xdg-config/gtk-3.0/colors.css"

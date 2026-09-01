@@ -8,15 +8,15 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-		flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/latest";
+		nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
   };
 
   outputs =
-    { nixpkgs, home-manager, flatpaks, ... }:
+    { nixpkgs, home-manager, nix-flatpak, ... }:
     {
       homeConfigurations."lethargii" = home-manager.lib.homeManagerConfiguration {
 				pkgs = nixpkgs.legacyPackages.x86_64-linux;
-				extraSpecialArgs = { inherit flatpaks; };
+				extraSpecialArgs = { inherit nix-flatpak; };
         modules = [
 					./home.nix
 				];
