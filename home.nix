@@ -8,6 +8,8 @@
 
   home.stateVersion = "26.05";
 
+	targets.genericLinux.enable = (builtins.getEnv "SYSTEM" != "nixos");
+
 	services.protonmail-bridge.enable = true;
 
   home.packages = with pkgs; [
