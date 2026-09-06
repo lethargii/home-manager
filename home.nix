@@ -14,11 +14,13 @@
 
   home.packages = with pkgs; [
     # GUI
+    nautilus
     geary
     papers
     foliate
-    firefox
+    gnome-calendar
 	] ++ lib.optionals (builtins.getEnv "DESKTOP" == "1") [
+    firefox
 		mullvad-browser
     tor-browser
     cavasik
@@ -30,11 +32,17 @@
     eyedropper
     onlyoffice-desktopeditors
     impression
-    nautilus
     gnome-online-accounts-gtk
     zrythm
 		(bottles.override { removeWarningPopup = true;})
-	] ++ lib.optionals (builtins.getEnv "GAMING" == "1") [
+	] ++ lib.optionals (builtins.getEnv "PHONE" == "1") [
+    decibels
+    showtime
+    gnome-clocks
+    snapshot
+    gnome-contacts
+    ptyxis
+    ] ++ lib.optionals (builtins.getEnv "GAMING" == "1") [
 		## Games
 		heroic
 		openmw
