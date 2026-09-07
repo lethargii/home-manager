@@ -9,10 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 		nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    nixvim.url = "github:nix-community/nixvim";
   };
 
   outputs =
-    { nixpkgs, home-manager, nix-flatpak, ... }:
+    { nixpkgs, home-manager, nix-flatpak, nixvim, ... }:
     let
       arch = builtins.getEnv "ARCH";
       pkgs = nixpkgs.legacyPackages.${arch};
@@ -23,6 +24,7 @@
 				inherit pkgs;
 				extraSpecialArgs = { inherit nix-flatpak; };
         modules = [
+					nixvim.homeModules.nixvim
 					./home.nix
 				];
       };
