@@ -250,6 +250,14 @@
 		lazygit.enable = true;
 	};
 
+	gtk = {
+		enable = true;
+		gtk3.theme = {
+			name = "adw-gtk3-dark";
+			package = pkgs.adw-gtk3;
+		};
+	};
+
 	services.flatpak = {
 		update.onActivation = true;
 		uninstallUnmanaged = true;
