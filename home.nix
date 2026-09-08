@@ -39,6 +39,7 @@
 		(bottles.override { removeWarningPopup = true;})
 		qucs-s
 		spice-up
+		inkscape
 	] ++ lib.optionals (builtins.getEnv "PHONE" == "1") [
     decibels
     showtime
@@ -140,6 +141,10 @@
           enable = true;
           setupLspCapabilities = true;
           settings = {
+						completion.list.selection = {
+							auto_insert = false;
+							preselect = false;
+						};
             sources = {
               default = [
                 "lsp"
@@ -163,7 +168,7 @@
 								"hide_documentation"
 							];
 							"<Enter>" = [
-								"select_and_accept"
+								"accept"
 								"fallback"
 							];
 						};
