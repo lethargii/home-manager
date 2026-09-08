@@ -47,6 +47,7 @@
     gnome-contacts
     ptyxis
 		folio
+		epiphany
     ] ++ lib.optionals (builtins.getEnv "GAMING" == "1") [
 		## Games
 		heroic
