@@ -112,6 +112,26 @@
 	];
 
   home.file = {
+		".config/wpg/templates/config_gtk-4.0_colors.css.base".source = ./config_gtk-4.0_colors.css.base;
+		".config/wpg/templates/config_gtk-3.0_colors.css.base".source = ./config_gtk-3.0_colors.css.base;
+		".config/wpg/templates/config_AdwSteamGtk_custom.css.base".source = ./config_AdwSteamGtk_custom.css.base;
+		".config/wpg/templates/config_ashell_config.toml.base".source = ./config_ashell_config.toml.base;
+		".config/wpg/templates/config_niri_colors.kdl.base".source = ./config_niri_colors.kdl.base;
+		".config/wpg/templates/config_wofi_colors.css.base".source = ./config_wofi_colors.css.base;
+		".config/wpg/templates/cache_wal_colors-wal.vim.base".source = ./cache_wal_colors-wal.vim.base;
+		".config/wpg/templates/ghostty_themes_Matugen.base".source = ./ghostty_themes_Matugen.base;
+		".config/wpg/templates/vesktop_themes_midnight-discord.css.base".source = ./vesktop_themes_midnight-discord.css.base;
+		".config/fish/config.fish".source = ./config.fish;
+		".config/gtk-3.0/gtk.css".source = ./gtk.css;
+		".config/gtk-4.0/gtk.css".source = ./gtk.css;
+		".config/ghostty/config.ghostty".source = ./config.ghostty;
+		".config/niri/config.kdl".source = ./config.kdl;
+		".config/niri/wofi.sh".source = ./wofi.sh;
+		".config/tmux/tmux.conf".source = ./tmux.conf;
+		".config/ashell/config.toml".source = ./config.toml;
+		".config/wofi/config".source = ./config;
+		".config/wofi/style.css".source = ./style.css;
+		".config/background".source = config.lib.file.mkOutOfStoreSymlink ./background;
   };
 
   home.sessionVariables = {
@@ -274,6 +294,7 @@
 		];
 		packages = [
       "ca.edestcroix.Recordbox"
+			"io.github.tobagin.karere"
       "org.gtk.Gtk3theme.adw-gtk3"
       "org.gtk.Gtk3theme.adw-gtk3-dark"
 		] ++ lib.optionals (builtins.getEnv "RIPPING" == "1") [

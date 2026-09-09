@@ -1,0 +1,24 @@
+" Special
+let wallpaper  = "/home/lethargii/.config/background"
+let background = "{color0}"
+let foreground = "{color7}"
+let cursor     = "{color7}"
+
+" Colors
+let color0  = "{color0}"
+let color1  = "{color8}"
+let color2  = "{color10}"
+let color3  = "{color11}" " Functions
+let color4  = "{color12}"
+let color5  = "{color13}" " Type
+let color6  = "{color9}" " Namespace, operator, strings
+let color7  = "{color15}"
+
+let color8  = "{color3}" " Commentaire
+let color9  = "{color8}"
+let color10 = "{color10}"
+let color11 = "{color11}" " TODO
+let color12 = "{color12}"
+let color13 = "{color13}"
+let color14 = "{color9}"
+let color15 = "{color15}"

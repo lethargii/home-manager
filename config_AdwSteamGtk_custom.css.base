@@ -1,0 +1,25 @@
+:root {{
+  --adw-accent-rgb: 127 208 220;
+  --adw-accent-bg-rgb: 66 185 203;
+  --adw-accent-fg-rgb: 127 208 220;
+
+  --adw-window-bg-rgb: 52 58 48;
+  --adw-window-fg-rgb: 246 247 248;
+
+  --adw-headerbar-bg-rgb: 52 58 48;
+  --adw-headerbar-fg-rgb: 246 247 248;
+
+  --adw-popover-bg-rgb: 52 58 48;
+  --adw-popover-fg-rgb: 246 247 248;
+
+  --adw-view-bg-rgb: 52 58 48;
+  --adw-view-fg-rgb: 246 247 248;
+
+  --adw-card-bg-rgb: 52 58 48;
+  --adw-card-fg-rgb: 246 247 248;
+
+  --adw-sidebar-bg-rgb: 52 58 48;
+  --adw-sidebar-fg-rgb: 246 247 248;
+  --adw-sidebar-border-rgb: 52 58 48;
+  --adw-sidebar-backdrop-rgb: 52 58 48;
+}}

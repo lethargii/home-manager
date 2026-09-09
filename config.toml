@@ -1,0 +1,50 @@
+position = "Bottom"
+
+[modules]
+left = [ [ "Workspaces" ] ]
+center = [ [ "Notifications", "WindowTitle", "MediaPlayer" ] ]
+right = [ [ "Tray", "Tempo", "Settings" ] ]
+
+[tempo]
+clock_format = "%a %d %b %R"
+timezones = [ "Europe/Paris" ]
+weather_location = { City = "Paris" }
+# weather_location = "Current"
+weather_indicator = "IconAndTemperature"
+
+[settings]
+indicators = [ "IdleInhibitor", "PowerProfile", "Audio", "Microphone", "Bluetooth", "Network", "Vpn", "Battery", "Brightness" ]
+shutdown_cmd = "systemctl poweroff"
+
+[notifications]
+format = "%m/%d %H:%M"
+show_timestamps = true
+show_bodies = false
+grouped = true
+toast = true
+toast_position = "top_right"
+toast_timeout = 4000
+toast_limit = 5
+toast_max_height = 150
+
+[osd]
+enabled = true
+timeout = 1500
+show_volume_percentage = true
+show_brightness_percentage = true
+
+[appearance]
+scale_factor = 1.3
+opacity = 0.8
+primary_color = "#66BBD1"
+success_color = "#4F6C9D"
+warning_color = "#6897A4"
+danger_color = "#66BBD1"
+text_color = "#c6c9c8"
+workspace_colors = [ "#66BBD1", "#9AA99F" ]
+
+[appearance.menu]
+opacity = 0.8
+
+[appearance.background_color]
+base = "#1e2724"

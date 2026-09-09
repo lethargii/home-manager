@@ -1,0 +1,220 @@
+include "./colors.kdl"
+
+environment {
+  SUDO_EDITOR "/usr/bin/nvim"
+}
+
+output "eDP-1" {
+	scale 1.75
+	mode "1440x900@120"
+}
+
+input {
+    keyboard {
+        xkb {
+          layout "us"
+          variant "intl"
+        }
+    }
+    touchpad {
+        tap
+        natural-scroll
+    }
+    mouse {
+    }
+    trackpoint {
+    }
+}
+
+prefer-no-csd
+
+layout {
+    gaps 16
+    center-focused-column "never"
+    default-column-width { proportion 0.5; }
+    focus-ring {
+        off
+    }
+    border {
+        on
+        urgent-color "#9b0000"
+    }
+    shadow {
+        // on
+
+        offset x=0 y=5
+        color "#0007"
+    }
+    struts {
+    }
+}
+
+workspace "1"
+workspace "2"
+workspace "3"
+workspace "4"
+
+window-rule {
+  geometry-corner-radius 12
+  clip-to-geometry true
+  draw-border-with-background false
+  open-maximized-to-edges false
+}
+
+window-rule {
+	match app-id=r#"firefox"#
+  open-maximized true
+}
+
+window-rule {
+  match app-id=r#"mullvad"#
+  open-on-workspace "1"
+  open-maximized true
+}
+
+window-rule {
+	match app-id=r#"ghostty"#
+  open-maximized true
+}
+
+window-rule {
+  match app-id=r#"steam"#
+  open-on-workspace "2"
+  open-maximized true
+  opacity 0.95
+}
+
+window-rule {
+  match app-id=r#"vesktop"#
+  open-on-workspace "3"
+  open-maximized true
+  open-focused false
+}
+
+window-rule {
+  match app-id=r#"geary"#
+  open-on-workspace "4"
+  open-maximized true
+}
+
+window-rule {
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+}
+
+window-rule {
+  match app-id=r#"Calendar"#
+  open-floating true
+}
+
+window-rule {
+  match app-id=r#"MissionCenter"#
+  open-floating true
+  default-column-width { proportion 0.7; }
+  default-window-height { proportion 0.8; }
+}
+
+window-rule {
+  match app-id=r#"Nautilus"#
+  open-floating true
+  default-column-width { proportion 0.7; }
+  default-window-height { proportion 0.8; }
+}
+
+window-rule {
+  match app-id=r#"aydroid"#
+	open-maximized true
+}
+
+spawn-at-startup "swaybg" "-i" ".config/background"
+
+spawn-at-startup "geary"
+
+spawn-at-startup "xfce4-power-manager"
+
+hotkey-overlay {
+  skip-at-startup
+}
+
+screenshot-path "~/Images/Screenshots/%Y-%m-%d %H-%M-%S.png"
+
+animations {
+}
+
+
+binds {
+    Mod+Shift+Slash { show-hotkey-overlay; }
+    Mod+T hotkey-overlay-title="Open a Terminal: Ghostty" { spawn-sh "GTK_IM_MODULE=simple ghostty"; }
+    Mod+F { spawn "nautilus"; }
+    Mod+D hotkey-overlay-title="Run an Application: wofi" { spawn-sh "/home/lethargii/.config/niri/wofi.sh"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "ashell msg volume-up"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "ashell msg volume-down"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "ashell msg volume-toggle-mute"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "ashell msg microphone-toggle-mute"; }
+    XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn-sh "ashell msg brightness-up"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "ashell msg brightness-down"; }
+    Mod+O repeat=false { toggle-overview; }
+    Mod+Q repeat=false { close-window; }
+    Mod+H     { focus-column-left; }
+    Mod+J     { focus-window-down; }
+    Mod+K     { focus-window-up; }
+    Mod+L     { focus-column-right; }
+    Mod+Ctrl+H     { move-column-left; }
+    Mod+Ctrl+J     { move-window-down; }
+    Mod+Ctrl+K     { move-window-up; }
+    Mod+Ctrl+L     { move-column-right; }
+    Mod+Shift+H     { focus-monitor-left; }
+    Mod+Shift+J     { focus-monitor-down; }
+    Mod+Shift+K     { focus-monitor-up; }
+    Mod+Shift+L     { focus-monitor-right; }
+    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+    Mod+U              { focus-workspace-down; }
+    Mod+I              { focus-workspace-up; }
+    Mod+Ctrl+U         { move-column-to-workspace-down; }
+    Mod+Ctrl+I         { move-column-to-workspace-up; }
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+    Mod+Ctrl+3 { move-column-to-workspace 3; }
+    Mod+Ctrl+4 { move-column-to-workspace 4; }
+    Mod+Ctrl+5 { move-column-to-workspace 5; }
+    Mod+Ctrl+6 { move-column-to-workspace 6; }
+    Mod+Ctrl+7 { move-column-to-workspace 7; }
+    Mod+Ctrl+8 { move-column-to-workspace 8; }
+    Mod+Ctrl+9 { move-column-to-workspace 9; }
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+Comma  { consume-window-into-column; }
+    Mod+Period { expel-window-from-column; }
+    Mod+Shift+F { fullscreen-window; }
+    Mod+Ctrl+F { expand-column-to-available-width; }
+    Mod+Minus { set-column-width "-5%"; }
+    Mod+Equal { set-column-width "+5%"; }
+    Mod+Shift+1 { set-column-width "33%"; }
+    Mod+Shift+2 { set-column-width "67%"; }
+    Mod+Shift+3 { set-column-width "100%"; }
+    Mod+Shift+4 { set-column-width "25%"; }
+    Mod+Shift+5 { set-column-width "50%"; }
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+    Mod+Shift+E { quit; }
+    Ctrl+Alt+Delete { spawn "flatpak" "run" "io.missioncenter.MissionCenter"; }
+    Mod+Shift+P { power-off-monitors; }
+}

@@ -1,0 +1,17 @@
+@import "/home/lethargii/.config/wofi/colors.css";
+
+window {
+  border: 4px solid darker(@base00);
+  border-radius: 0.4rem;
+  background-color: alpha(darker(@base00), 0.6);
+}
+
+#entry {
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  font-family: "JetBrainsMono Nerd Font";
+}
+
+#entry:selected {
+  background-color: alpha(@base09, 0.6);
+}

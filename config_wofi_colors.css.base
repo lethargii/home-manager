@@ -1,0 +1,32 @@
+    @define-color base00 {color0};
+
+    @define-color base01 {color1};
+
+    @define-color base02 {color2};
+
+    @define-color base03 {color3};
+
+    @define-color base04 {color4};
+
+    @define-color base05 {color5};
+
+    @define-color base06 {color6};
+
+    @define-color base07 {color7};
+
+    @define-color base08 {color8};
+
+    @define-color base09 {color9};
+
+    @define-color base0a {color10};
+
+    @define-color base0b {color11};
+
+    @define-color base0c {color12};
+
+    @define-color base0d {color13};
+
+    @define-color base0e {color14};
+
+    @define-color base0f {color15};
+
