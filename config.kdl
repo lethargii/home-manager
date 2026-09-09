@@ -62,6 +62,11 @@ window-rule {
 }
 
 window-rule {
+	match app-id=r#"ongo"#
+	open-floating true
+}
+
+window-rule {
 	match app-id=r#"firefox"#
   open-maximized true
 }

@@ -1,4 +1,7 @@
 { config, pkgs, lib, nix-flatpak, ... }:
+let
+	background = builtins.fetchurl { url = "https://press.na.square-enix.com/Files/File?url=Q81XdHF0AZe4uWM4lLOQQd7x8HGL%2baOSgQvmSqo3pyIvT%2fvnzXhGwKr7g4vg2vwNatD4Zb2qzmqMT0SmR3gej48B4X8DeGtlC6FnAJtbT48jGu7JQ3KUTuuikGG9GF%2bW7RmfusbixLuNHMh27qfAhgQV81cMvXzxTaZZjk%2bNFA3FJFoMF2zP8y%2bvU4%2fje1DbypGYSYA7EQEEgLsYhRjxinKp%2fPYoeit%2fN4lMF9S4cZVr3cvSRIB4WyNWApKw6RvruoomtKhTCyrqqTg0zet7iqfNk0CzMbppvlqf4voFd2R23myLLMNFcrl1OZkyA7xOf4%2biRTcF9UoR0ikr5WI8LzB0DWxu7DNKR01i42E%2fj43Njn6WDtQjS1R9RaszIYyg4uWab52IvwSdQm48IL1Zb9wNqhNJRBwnHnGwk3UsPP%2fL6sZ5zO8M02VjWpwh68tqWBAFt%2bfrL0Ju5Aqo9q1UYKjETIjKFt1g4InQp9O1UbU%2bc02qeqHJtyJSjTf%2bOMMhgbU2V7EZ8R6RYvaWxIjW7A%3d%3d"; name = "background"; };
+in
 {
 	imports = [
 		nix-flatpak.homeManagerModules.nix-flatpak
@@ -131,7 +134,7 @@
 		".config/ashell/config.toml".source = ./config.toml;
 		".config/wofi/config".source = ./config;
 		".config/wofi/style.css".source = ./style.css;
-		".config/background".source = config.lib.file.mkOutOfStoreSymlink ./background;
+		".config/background".source = background;
   };
 
   home.sessionVariables = {
