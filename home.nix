@@ -1,7 +1,4 @@
 { config, pkgs, lib, nix-flatpak, ... }:
-let
-	background = builtins.fetchurl { url = "https://press.na.square-enix.com/Files/File?url=Q81XdHF0AZe4uWM4lLOQQd7x8HGL%2baOSgQvmSqo3pyIvT%2fvnzXhGwKr7g4vg2vwNatD4Zb2qzmqMT0SmR3gej48B4X8DeGtlC6FnAJtbT48jGu7JQ3KUTuuikGG9GF%2bW7RmfusbixLuNHMh27qfAhgQV81cMvXzxTaZZjk%2bNFA3FJFoMF2zP8y%2bvU4%2fje1DbypGYSYA7EQEEgLsYhRjxinKp%2fPYoeit%2fN4lMF9S4cZVr3cvSRIB4WyNWApKw6RvruoomtKhTCyrqqTg0zet7iqfNk0CzMbppvlqf4voFd2R23myLLMNFcrl1OZkyA7xOf4%2biRTcF9UoR0ikr5WI8LzB0DWxu7DNKR01i42E%2fj43Njn6WDtQjS1R9RaszIYyg4uWab52IvwSdQm48IL1Zb9wNqhNJRBwnHnGwk3UsPP%2fL6sZ5zO8M02VjWpwh68tqWBAFt%2bfrL0Ju5Aqo9q1UYKjETIjKFt1g4InQp9O1UbU%2bc02qeqHJtyJSjTf%2bOMMhgbU2V7EZ8R6RYvaWxIjW7A%3d%3d"; name = "background"; sha256 = "547f40b369c6455f56541466f58335e497ffc6c98ec6a5af37685a980df26f74"; };
-in
 {
 	imports = [
 		nix-flatpak.homeManagerModules.nix-flatpak
@@ -134,7 +131,7 @@ in
 		".config/ashell/config.toml".source = ./config.toml;
 		".config/wofi/config".source = ./config;
 		".config/wofi/style.css".source = ./style.css;
-		".config/background".source = background;
+		".config/background".source = builtins.fetchurl { url = "https://press.na.square-enix.com/Files/File?url=Q81XdHF0AZe4uWM4lLOQQd7x8HGL%2baOSgQvmSqo3pyIvT%2fvnzXhGwKr7g4vg2vwNatD4Zb2qzmqMT0SmR3gej48B4X8DeGtlC6FnAJtbT48jGu7JQ3KUTuuikGG9GF%2bW8MIW3RLk6VN2UI8sc6HnNY09SWN2z9UKtRPpBzO%2by6GHbGFeEco5XyZON4Elj0diq5C1RXJvAmngunFgxXdyWrrq6%2fDaHf6LX%2fAseIPz0MLwOAOq0BIn5wqwPKSmeYuuP6Eo0eEWOiLQUdqAmLy25ODlfxF5iMP2skP4dh1%2fMWvG%2ffghoQoj644A0r3HOhwZL3tzTfIq9wZmmcuDIQ1xcw%2bifhiFXjLgL4xGIzxmFbx5aH%2bXnifrF7uny1hsR1y3ysBdJ3lI%2fsa4zeHGhqld6Ul%2ba8NleBBvKZ7tJc0mVh0AN0mVSwOvByChhBhbK7t%2fwHxWbEiVkcPblH8EB7QllVT4QZoC7X05LexG6N2k%2bRxhp%2bO552zCwGK1%2f8dikbDBoN91OsuaI9mEzp7JYcZGAw%3d%3d"; name = "background"; };
   };
 
   home.sessionVariables = {
