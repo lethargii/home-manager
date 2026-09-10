@@ -1,0 +1,24 @@
+{ config, pkgs, lib, nix-flatpak, ... }:
+{
+	programs.nixvim.colorschemes.base16 = {
+		enable = true;
+		colorscheme = {
+			base00 = "#ffffff";
+			base01 = "#ffffff";
+			base02 = "#ffffff";
+			base03 = "#ffffff";
+			base04 = "#ffffff";
+			base05 = "#ffffff";
+			base06 = "#ffffff";
+			base07 = "#ffffff";
+			base08 = "#ffffff";
+			base09 = "#ffffff";
+			base0a = "#ffffff";
+			base0b = "#ffffff";
+			base0c = "#ffffff";
+			base0d = "#ffffff";
+			base0e = "#ffffff";
+			base0f = "#ffffff";
+		};
+	};
+}

@@ -2,6 +2,7 @@
 {
 	imports = [
 		nix-flatpak.homeManagerModules.nix-flatpak
+		./nvim
 	];
   home.username = builtins.getEnv "USER";
   home.homeDirectory = "/home/${config.home.username}";
