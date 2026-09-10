@@ -2,7 +2,7 @@
 {
 	imports = [
 		nix-flatpak.homeManagerModules.nix-flatpak
-		./nvim
+		./nvim.nix
 	];
   home.username = builtins.getEnv "USER";
   home.homeDirectory = "/home/${config.home.username}";
@@ -122,6 +122,7 @@
 		".config/wpg/templates/cache_wal_colors-wal.vim.base".source = ./cache_wal_colors-wal.vim.base;
 		".config/wpg/templates/ghostty_themes_Matugen.base".source = ./ghostty_themes_Matugen.base;
 		".config/wpg/templates/vesktop_themes_midnight-discord.css.base".source = ./vesktop_themes_midnight-discord.css.base;
+		".config/wpg/templates/config_home-manager_nvim.nix.base".source = ./config_home-manager_nvim.nix.base;
 		".config/fish/config.fish".source = ./config.fish;
 		".config/gtk-3.0/gtk.css".source = ./gtk.css;
 		".config/gtk-4.0/gtk.css".source = ./gtk.css;
