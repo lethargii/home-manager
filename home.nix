@@ -2,7 +2,7 @@
 {
 	imports = [
 		nix-flatpak.homeManagerModules.nix-flatpak
-		./nvim.nix
+		#./nvim.nix
 	];
   home.username = builtins.getEnv "USER";
   home.homeDirectory = "/home/${config.home.username}";
@@ -12,6 +12,22 @@
 	targets.genericLinux.enable = (builtins.getEnv "SYSTEM" != "nixos");
 
 	services.protonmail-bridge.enable = true;
+
+	systemd.user.services.ironbar = {
+    Unit = {
+      Description = "Run ironbar.";
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+      Requisite = [ "graphical-session.target" ];
+    };
+		Install = {
+			WantedBy = [ "niri.service" ];
+		};
+    Service = {
+      ExecStart = "${pkgs.ironbar}/bin/ironbar";
+		};
+  };
+
 
 	nixpkgs.config.allowUnfree = true;
 
@@ -32,6 +48,7 @@
 		gnome-disk-utility
     vesktop
     vscodium
+		cambalache
     eyedropper
     onlyoffice-desktopeditors
     impression
@@ -41,6 +58,19 @@
 		qucs-s
 		spice-up
 		inkscape
+		ironbar
+		swaynotificationcenter
+    swayosd
+    fractal
+		element-desktop
+		graphviz
+		ffmpeg
+		decibels
+		networkmanagerapplet
+		anyrun
+		awww
+		wl-mirror
+		jq
 	] ++ lib.optionals (builtins.getEnv "PHONE" == "1") [
     decibels
     showtime
@@ -83,6 +113,8 @@
 		rsync
 		imagemagick
 		e2fsprogs
+		openfortivpn
+		visp
     # Interpreters and compilers
     python3
     gcc
@@ -92,6 +124,7 @@
     cargo
     dotnet-sdk_10
     bun
+		jdk
     # Modding
 		android-tools
   ] ++ [
@@ -103,6 +136,9 @@
     papirus-icon-theme
 		# Fonts
     nerd-fonts.departure-mono
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.adwaita-mono
+    nerd-fonts.fira-mono
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-cjk-sans-static
@@ -113,26 +149,13 @@
 	];
 
   home.file = {
-		".config/wpg/templates/config_gtk-4.0_colors.css.base".source = ./config_gtk-4.0_colors.css.base;
-		".config/wpg/templates/config_gtk-3.0_colors.css.base".source = ./config_gtk-3.0_colors.css.base;
-		".config/wpg/templates/config_AdwSteamGtk_custom.css.base".source = ./config_AdwSteamGtk_custom.css.base;
-		".config/wpg/templates/config_ashell_config.toml.base".source = ./config_ashell_config.toml.base;
-		".config/wpg/templates/config_niri_colors.kdl.base".source = ./config_niri_colors.kdl.base;
-		".config/wpg/templates/config_wofi_colors.css.base".source = ./config_wofi_colors.css.base;
-		".config/wpg/templates/cache_wal_colors-wal.vim.base".source = ./cache_wal_colors-wal.vim.base;
-		".config/wpg/templates/ghostty_themes_Matugen.base".source = ./ghostty_themes_Matugen.base;
-		".config/wpg/templates/vesktop_themes_midnight-discord.css.base".source = ./vesktop_themes_midnight-discord.css.base;
-		".config/wpg/templates/config_home-manager_nvim.nix.base".source = ./config_home-manager_nvim.nix.base;
-		".config/fish/config.fish".source = ./config.fish;
-		".config/gtk-3.0/gtk.css".source = ./gtk.css;
-		".config/gtk-4.0/gtk.css".source = ./gtk.css;
-		".config/ghostty/config.ghostty".source = ./config.ghostty;
-		".config/niri/config.kdl".source = ./config.kdl;
-		".config/niri/wofi.sh".source = ./wofi.sh;
-		".config/tmux/tmux.conf".source = ./tmux.conf;
-		".config/ashell/config.toml".source = ./config.toml;
-		".config/wofi/config".source = ./config;
-		".config/wofi/style.css".source = ./style.css;
+		".config/wpg/templates".source = ./wpg;
+		".config/fish/config.fish".source = ./fish/config.fish;
+		".config/gtk-3.0/gtk.css".source = ./gtk/gtk.css;
+		".config/gtk-4.0/gtk.css".source = ./gtk/gtk.css;
+		".config/ghostty/config.ghostty".source = ./ghostty/config.ghostty;
+		".config/niri/config.kdl".source = ./niri/config.kdl;
+		".config/tmux/tmux.conf".source = ./tmux/tmux.conf;
 		".config/background".source = builtins.fetchurl { url = "https://press.na.square-enix.com/Files/File?url=Q81XdHF0AZe4uWM4lLOQQd7x8HGL%2baOSgQvmSqo3pyIvT%2fvnzXhGwKr7g4vg2vwNatD4Zb2qzmqMT0SmR3gej48B4X8DeGtlC6FnAJtbT48jGu7JQ3KUTuuikGG9GF%2bW8MIW3RLk6VN2UI8sc6HnNY09SWN2z9UKtRPpBzO%2by6GHbGFeEco5XyZON4Elj0diq5C1RXJvAmngunFgxXdyWrrq6%2fDaHf6LX%2fAseIPz0MLwOAOq0BIn5wqwPKSmeYuuP6Eo0eEWOiLQUdqAmLy25ODlfxF5iMP2skP4dh1%2fMWvG%2ffghoQoj644A0r3HOhwZL3tzTfIq9wZmmcuDIQ1xcw%2bifhiFXjLgL4xGIzxmFbx5aH%2bXnifrF7uny1hsR1y3ysBdJ3lI%2fsa4zeHGhqld6Ul%2ba8NleBBvKZ7tJc0mVh0AN0mVSwOvByChhBhbK7t%2fwHxWbEiVkcPblH8EB7QllVT4QZoC7X05LexG6N2k%2bRxhp%2bO552zCwGK1%2f8dikbDBoN91OsuaI9mEzp7JYcZGAw%3d%3d"; name = "background"; };
   };
 
@@ -141,6 +164,10 @@
 
   programs = {
 		home-manager.enable = true;
+		direnv = {
+			enable = true;
+			enableFishIntegration = true;
+		};
 		nixvim = {
       enable = true;
 			nixpkgs.config.allowUnfree = true;
@@ -191,6 +218,12 @@
 							];
 							"<Enter>" = [
 								"accept"
+								"fallback"
+							];
+							"<Up>" = [
+								"fallback"
+							];
+							"<Down>" = [
 								"fallback"
 							];
 						};

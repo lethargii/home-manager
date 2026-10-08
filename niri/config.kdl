@@ -62,7 +62,7 @@ window-rule {
 }
 
 window-rule {
-	match app-id=r#"ongo"#
+	match title=r#"TP"#
 	open-floating true
 }
 
@@ -131,9 +131,13 @@ window-rule {
 	open-maximized true
 }
 
-spawn-at-startup "swaybg" "-i" ".config/background"
+spawn-at-startup "awww-daemon"
 
 spawn-at-startup "geary"
+
+spawn-at-startup "swaync"
+spawn-at-startup "swayosd-server"
+spawn-at-startup "anyrun" "daemon"
 
 spawn-at-startup "xfce4-power-manager"
 
@@ -151,17 +155,20 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+T hotkey-overlay-title="Open a Terminal: Ghostty" { spawn-sh "GTK_IM_MODULE=simple ghostty"; }
     Mod+F { spawn "nautilus"; }
-    Mod+D hotkey-overlay-title="Run an Application: wofi" { spawn-sh "/home/lethargii/.config/niri/wofi.sh"; }
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "ashell msg volume-up"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "ashell msg volume-down"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "ashell msg volume-toggle-mute"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "ashell msg microphone-toggle-mute"; }
+    Mod+D hotkey-overlay-title="Run an Application: wofi" { spawn "anyrun"; }
+		Mod+P repeat=false { spawn-sh "wl-mirror $(niri msg --json focused-output | jq -r .name)"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "swayosd-client --output-volume raise"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "swayosd-client --output-volume lower"; }
+    XF86AudioMute        allow-when-locked=true { spawn-sh "swayosd-client --output-volume mute-toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn-sh "swayosd-client --input-volume mute-toggle"; }
     XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
     XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
     XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
-    XF86MonBrightnessUp allow-when-locked=true { spawn-sh "ashell msg brightness-up"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "ashell msg brightness-down"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn-sh "swayosd-client --brightness raise"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn-sh "swayosd-client --brightness lower"; }
+		Mod+S { toggle-window-floating; }
+		Mod+Shift+S { switch-focus-between-floating-and-tiling; }
     Mod+O repeat=false { toggle-overview; }
     Mod+Q repeat=false { close-window; }
     Mod+H     { focus-column-left; }

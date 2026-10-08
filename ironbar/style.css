@@ -1,0 +1,27 @@
+* {
+	font-family: 'AdwaitaMono Nerd Font Mono';
+}
+
+window{
+	margin: 0.3em;
+	border-radius: 1em;
+	border: 0.15em solid @accent_fg_color;
+}
+
+.background{
+}
+
+.popup{
+	margin: -0.5em;
+	padding: 1em;
+	border-radius: 1em;
+	border: 0.15em solid @accent_fg_color;
+}
+
+.widget {
+	margin: 0.3em;
+}
+
+.item {
+	margin: 0.1em;
+}
