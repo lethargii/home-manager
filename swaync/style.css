@@ -1,0 +1,181 @@
+/*Control center*/
+notificationwindow, blankwindow {
+	background: transparent;
+}
+
+.control-center {
+	background: @window_bg_color;
+	margin: 0.5em;
+	padding: 0.5em;
+	border-radius: 1em;
+	border: 0.15em solid @accent_fg_color;
+	animation-name: slide-in;
+	animation-duration: 300ms;
+	animation-timing-function: ease-out;
+	animation-fill-mode: forwards;
+}
+
+@keyframes slide-in {
+from {
+	margin-left: 700px;
+	margin-right: -700px;
+}
+to {
+	margin-left:0.5em;
+	margin-right: 0.5em;
+}
+}
+
+/*Notifications*/
+.notification-row{
+
+}
+.close-button{
+	margin: 1em;
+}
+
+.control-center-list{
+	background: transparent;
+}
+
+.notification-background{
+}
+
+@keyframes expand-in{
+from {
+	-gtk-icon-transform: scale(0);
+}
+to {
+	-gtk-icon-transform: scale(1);
+}
+}
+@keyframes expand-out{
+from {
+	-gtk-icon-transform: scale(0);
+}
+to {
+	-gtk-icon-transform: scale(1);
+}
+}
+
+.notification {
+	background: @window_bg_color;
+	margin: 0.5em;
+	padding: 0.5em;
+	border-radius: 1em;
+	border: 0.15em solid @accent_fg_color;
+	transition: padding 200ms ease-out;
+}
+
+.notification image{
+	-gtk-icon-transform: scale(2);
+	min-height: 32px;
+	min-width: 32px;
+	margin: 0.3em 0.8em 0.3em 0.3em;
+}
+
+.notification:hover{
+	padding: 1em;
+}
+
+.summary{
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+.time{
+	font-weight: 300;
+	margin-right: 36px;
+	margin-top: 6px;
+}
+
+/*Widgets*/
+.widget {
+	margin: 0.5em;
+}
+
+@keyframes expand-in-notification-group {
+from {
+	-gtk-icon-transform: scale(0);
+}
+to {
+	-gtk-icon-transform: scale(1);
+}
+}
+@keyframes expand-out-notification-group {
+from {
+	-gtk-icon-transform: scale(1);
+}
+to {
+	-gtk-icon-transform: scale(0);
+}
+}
+
+.notification-group.collapsed .notification-group-headers {
+	font-size: 0;
+}
+.notification-group .notification-group-headers {
+	transition: font-size 200ms ease;
+}
+.notification-group.collapsed .notification-group-headers image {
+	animation-name: expand-out-notification-group;
+  animation-duration: 250ms;
+  animation-fill-mode: forwards;
+}
+.notification-group .notification-group-headers image {
+	animation-name: expand-in-notification-group;
+  animation-duration: 250ms;
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes expand-in-notification-group-buttons {
+from {
+	min-height: 0;
+	min-width: 0;
+}
+to {
+	min-height: 32px;
+	min-width: 32px;
+}
+}
+@keyframes expand-out-notification-group-buttons {
+from {
+	min-height: 32px;
+	min-width: 32px;
+}
+to {
+	min-height: 0;
+	min-width: 0;
+}
+}
+
+.notification-group.collapsed .notification-group-headers {
+	font-size: 0;
+}
+
+.notification-group.collapsed .notification-group-buttons button {
+	animation-name: expand-out-notification-group-buttons;
+  animation-duration: 250ms;
+  animation-fill-mode: forwards;
+}
+.notification-group .notification-group-buttons button {
+	animation-name: expand-in-notification-group-buttons;
+  animation-duration: 250ms;
+  animation-fill-mode: forwards;
+}
+
+/*Title*/
+
+.widget-title > label {
+	font-size: 2em;
+	font-weight: bolder;
+}
+
+.widget-title {
+}
+
+.widget-dnd > label {
+	font-size: 1.3em;
+	font-weight: bold;
+}

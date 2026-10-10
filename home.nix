@@ -4,6 +4,16 @@
 		nix-flatpak.homeManagerModules.nix-flatpak
 		#./nvim.nix
 	];
+
+	nixpkgs.overlays = [
+		(final: prev: {
+    	swaynotificationcenter = prev.swaynotificationcenter.overrideAttrs (old: {
+      	postInstall = (old.postInstall or "") + ''
+        	echo "" > $out/etc/xdg/swaync/style.css
+      	'';
+    	});
+  	})
+	];
   home.username = builtins.getEnv "USER";
   home.homeDirectory = "/home/${config.home.username}";
 
@@ -11,7 +21,15 @@
 
 	targets.genericLinux.enable = (builtins.getEnv "SYSTEM" != "nixos");
 
-	services.protonmail-bridge.enable = true;
+	services = {
+		protonmail-bridge.enable = true;
+		awww.enable = true;
+		swaync = {
+			enable = true;
+			#style = ./swaync/style.css;
+		};
+		swayosd.enable = true;
+	};
 
 	systemd.user.services.ironbar = {
     Unit = {
@@ -71,6 +89,7 @@
 		awww
 		wl-mirror
 		jq
+		libnotify
 	] ++ lib.optionals (builtins.getEnv "PHONE" == "1") [
     decibels
     showtime
@@ -150,6 +169,9 @@
 
   home.file = {
 		".config/wpg/templates".source = ./wpg;
+		".config/swayosd".source = ./swayosd;
+		".config/anyrun".source = ./anyrun;
+		".config/ironbar".source = ./ironbar;
 		".config/fish/config.fish".source = ./fish/config.fish;
 		".config/gtk-3.0/gtk.css".source = ./gtk/gtk.css;
 		".config/gtk-4.0/gtk.css".source = ./gtk/gtk.css;

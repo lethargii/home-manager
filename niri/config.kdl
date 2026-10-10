@@ -131,12 +131,7 @@ window-rule {
 	open-maximized true
 }
 
-spawn-at-startup "awww-daemon"
-
 spawn-at-startup "geary"
-
-spawn-at-startup "swaync"
-spawn-at-startup "swayosd-server"
 spawn-at-startup "anyrun" "daemon"
 
 spawn-at-startup "xfce4-power-manager"
