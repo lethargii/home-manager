@@ -5,6 +5,8 @@
 	] ++ lib.optionals (builtins.getEnv "DESKTOP" == "1") [
     ./nvim.nix
 		./nvim_colors.nix
+	] ++ lib.optionals (builtins.getEnv "RICE" == "1") [
+		./services.nix
 	];
 
 	nixpkgs.overlays = [
@@ -22,16 +24,6 @@
   home.stateVersion = "26.05";
 
 	targets.genericLinux.enable = (builtins.getEnv "SYSTEM" != "nixos");
-
-	services = {
-		protonmail-bridge.enable = true;
-		awww.enable = true;
-		swaync = {
-			enable = true;
-			#style = ./swaync/style.css;
-		};
-		swayosd.enable = true;
-	};
 
 	systemd.user.services.ironbar = {
     Unit = {
