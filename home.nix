@@ -104,7 +104,7 @@
 		melonds
 		protontricks
     prismlauncher
-		superTuxKart
+		supertuxkart
 	] ++ lib.optionals (builtins.getEnv "RIPPING" == "1") [
 		## Ripping
     eartag
