@@ -98,6 +98,7 @@
   "end": [
     {
       "type": "clipboard",
+			"icon": "icon:edit-paste-symbolic"
       "max_items": 5,
       "truncate": {
         "mode": "end",

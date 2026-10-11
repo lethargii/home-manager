@@ -59,6 +59,9 @@ window-rule {
   clip-to-geometry true
   draw-border-with-background false
   open-maximized-to-edges false
+	background-effect {
+		blur true
+	}
 }
 
 window-rule {

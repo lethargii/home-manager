@@ -1,24 +1,151 @@
 { config, pkgs, lib, nix-flatpak, ... }:
 {
-	programs.nixvim.colorschemes.base16 = {
+	programs.nixvim = {
 		enable = true;
-		colorscheme = {
-			base00 = "#c6c9c8";
-			base01 = "#ccffff";
-			base02 = "#75cee6";
-			base03 = "#b3f0c7";
-			base04 = "#5788db";
-			base05 = "#c6c9c8";
-			base06 = "#70ffff";
-			base07 = "#fdffff";
-			base08 = "#1e2724";
-			base09 = "#B0C3BF";
-			base0A = "#6897A4";
-			base0B = "#9AA99F";
-			base0C = "#4F6C9D";
-			base0D = "#A55E91";
-			base0E = "#66BBD1";
-			base0F = "#c6c9c8";
+		nixpkgs.config.allowUnfree = true;
+		globals.mapleader = " ";
+		opts = {
+			tabstop = 2;
+			shiftwidth = 2;
+			clipboard = "unnamedplus";
+			number = true;
 		};
+		diagnostic.settings = {
+			virtual_lines = {
+				current_line = true;
+			};
+			virtual_text = false;
+		};
+		
+		plugins = {
+			lsp = {
+				enable = true;
+				servers = {
+					lua_ls.enable = true;
+					vtsls.enable = true;
+					rust_analyzer = {
+						enable = true;
+						installCargo = true;
+						installRustc = true;
+					};
+					roslyn_ls.enable = true;
+					nixd.enable = true;
+					clangd.enable = true;
+					asm_lsp.enable = true;
+					bashls.enable = true;
+					cssls.enable = true;
+					dockerls.enable = true;
+					fish_lsp.enable = true;
+					html.enable = true;
+					jdtls.enable = true;
+					phpactor.enable = true;
+					pyright.enable = true;
+					sqls.enable = true;
+					tailwindcss.enable = true;
+					gitlab_ci_ls.enable = true;
+				};
+			};
+			# blink-cmp = {
+			# 	enable = true;
+			# 	setupLspCapabilities = true;
+			# 	settings = {
+			# 		completion.list.selection = {
+			# 			auto_insert = false;
+			# 			preselect = false;
+			# 		};
+			# 		sources = {
+			# 			default = [
+			# 				"lsp"
+			# 				"buffer"
+			# 				"path"
+			# 				"snippets"
+			# 			];
+			# 		};
+			# 		keymap = {
+			# 			"<S-Tab>" = [
+			# 				"select_prev"
+			# 				"fallback"
+			# 			];
+			# 			"<Tab>" = [
+			# 				"select_next"
+			# 				"fallback"
+			# 			];
+			# 			"<C-space>" = [
+			# 				"show"
+			# 				"show_documentation"
+			# 				"hide_documentation"
+			# 			];
+			# 			"<Enter>" = [
+			# 				"accept"
+			# 				"fallback"
+			# 			];
+			# 			"<Up>" = [
+			# 				"fallback"
+			# 			];
+			# 			"<Down>" = [
+			# 				"fallback"
+			# 			];
+			# 		};
+			# 	};
+			# };
+			mini-completion = {
+				enable = true;
+				settings = {
+					mappings = {
+					};
+				};
+			};
+			treesitter = {
+				enable = true;
+				highlight.enable = true;
+				indent.enable = true;
+			};
+			mini-clue = {
+				enable = true;
+				settings = {
+					triggers = [
+						{
+							keys = "<Leader>";
+							mode = "n";
+						}
+					];
+				};
+			};
+			mini-statusline.enable = true;
+			mini-pairs.enable = true;
+			mini-tabline.enable = true;
+			mini-comment.enable = true;
+			mini-indentscope.enable = true;
+			mini-git.enable = true;
+			mini-files.enable = true;
+			mini-icons.enable = true;
+			mini-snippets.enable = true;
+			mini-keymap = {
+				enable = true;
+				luaConfig.post = ''
+					local map_multistep = require("mini.keymap").map_multistep
+					map_multistep('i', '<Tab>',   { 'minisnippets_next','minisnippets_expand','pmenu_next' })
+					map_multistep('i', '<S-Tab>', { 'minisnippets_prev', 'pmenu_prev' })
+					map_multistep('i', '<CR>',    { 'pmenu_accept', 'minipairs_cr' })
+					map_multistep('i', '<BS>',    { 'minipairs_bs' })
+				'';
+			};
+			dap.enable = true;
+			dap-ui.enable = true;
+			none-ls.enable = true;
+			friendly-snippets.enable = true;
+		};
+		keymaps = [
+			{
+				mode = "n";
+				key = "<leader>e";
+				action = "<cmd>lua MiniFiles.open()<CR>";
+			}
+			{
+				mode = "n";
+				key = "<leader>lg";
+				action = "<cmd>LazyGit<CR>";
+			}
+		];
 	};
 }

@@ -1,10 +1,10 @@
-cursor-color = {color6}
-cursor-text = {color1}
+cursor-color = {color7}
+cursor-text = {color0}
 
 foreground = {color7}
 background = {color0}
-selection-foreground = {color1}
-selection-background = {color6}
+selection-foreground = {color0}
+selection-background = {color7}
 
 palette = 0={color0}
 palette = 8={color8}
