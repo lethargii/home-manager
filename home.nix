@@ -104,6 +104,7 @@
 		melonds
 		protontricks
     prismlauncher
+		superTuxKart
 	] ++ lib.optionals (builtins.getEnv "RIPPING" == "1") [
 		## Ripping
     eartag
@@ -179,7 +180,6 @@
 		".config/ghostty/config.ghostty".source = ./ghostty/config.ghostty;
 		".config/niri/config.kdl".source = ./niri/config.kdl;
 		".config/tmux/tmux.conf".source = ./tmux/tmux.conf;
-		".config/background".source = builtins.fetchurl { url = "https://press.na.square-enix.com/Files/File?url=Q81XdHF0AZe4uWM4lLOQQd7x8HGL%2baOSgQvmSqo3pyIvT%2fvnzXhGwKr7g4vg2vwNatD4Zb2qzmqMT0SmR3gej48B4X8DeGtlC6FnAJtbT48jGu7JQ3KUTuuikGG9GF%2bW8MIW3RLk6VN2UI8sc6HnNY09SWN2z9UKtRPpBzO%2by6GHbGFeEco5XyZON4Elj0diq5C1RXJvAmngunFgxXdyWrrq6%2fDaHf6LX%2fAseIPz0MLwOAOq0BIn5wqwPKSmeYuuP6Eo0eEWOiLQUdqAmLy25ODlfxF5iMP2skP4dh1%2fMWvG%2ffghoQoj644A0r3HOhwZL3tzTfIq9wZmmcuDIQ1xcw%2bifhiFXjLgL4xGIzxmFbx5aH%2bXnifrF7uny1hsR1y3ysBdJ3lI%2fsa4zeHGhqld6Ul%2ba8NleBBvKZ7tJc0mVh0AN0mVSwOvByChhBhbK7t%2fwHxWbEiVkcPblH8EB7QllVT4QZoC7X05LexG6N2k%2bRxhp%2bO552zCwGK1%2f8dikbDBoN91OsuaI9mEzp7JYcZGAw%3d%3d"; name = "background"; };
   };
 
   home.sessionVariables = {
