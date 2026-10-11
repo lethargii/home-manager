@@ -76,6 +76,7 @@
 		swaynotificationcenter
     swayosd
     fractal
+		mission-center
 		networkmanagerapplet
 		anyrun
 		awww
