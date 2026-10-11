@@ -77,6 +77,7 @@
     swayosd
     fractal
 		mission-center
+		gaphor
 		networkmanagerapplet
 		anyrun
 		awww
