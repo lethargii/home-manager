@@ -132,6 +132,10 @@
 		wl-mirror
 		jq
 		libnotify
+		hellwal
+		pywal16
+		wallust
+		matugen
     # Interpreters and compilers
     python3
     gcc
@@ -165,9 +169,7 @@
   home.file = {
 		".config/wpg/templates/config_gtk-3.0_colors.css.base".source = ./wpg/config_gtk-3.0_colors.css.base;
 		".config/wpg/templates/config_gtk-4.0_colors.css.base".source = ./wpg/config_gtk-4.0_colors.css.base;
-		".config/wpg/templates/config_home-manager_nvim.nix.base".source = ./wpg/config_home-manager_nvim.nix.base;
 		".config/wpg/templates/config_niri_colors.kdl.base".source = ./wpg/config_niri_colors.kdl.base;
-		".config/wpg/templates/ghostty_themes_Matugen.base".source = ./wpg/ghostty_themes_Matugen.base;
 		".config/swayosd".source = ./swayosd;
 		".config/anyrun".source = ./anyrun;
 		#".config/ironbar".source = ./ironbar;

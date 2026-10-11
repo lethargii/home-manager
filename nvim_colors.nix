@@ -2,24 +2,20 @@
 {
 	programs.nixvim.colorschemes.mini-base16 = {
 		enable = true;
-		settings.palette = {
-			base00 = "#112641";
-			base01 = "#3a475e";
-			base02 = "#606b81";
-			base03 = "#8691a7";
-			base04 = "#d5dc81";
-			base05 = "#e2e98f";
-			base06 = "#eff69c";
-			base07 = "#fcffaa";
-			base08 = "#ffcfa0";
-			base09 = "#cc7e46";
-			base0A = "#46a436";
-			base0B = "#9ff895";
-			base0C = "#ca6ecf";
-			base0D = "#42f7ff";
-			base0E = "#ffc4ff";
-			base0F = "#00a5c5";
-		};
+		callSetup = false;
+
+		luaConfig.post = ''
+			local base16 = require("mini.base16")
+			local palette = assert(loadfile(vim.fn.expand("~/.cache/hellwal/nvim_colors.lua")))()
+
+			-- mini.base16 attend des couleurs "#rrggbb"
+			for k, v in pairs(palette) do
+				if type(v) == "string" and not v:find("^#") then
+					palette[k] = "#" .. v
+				end
+			end
+
+			base16.setup({ palette = palette, use_cterm = false })
+		'';
 	};
 }
-

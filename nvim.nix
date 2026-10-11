@@ -134,6 +134,7 @@
 			dap-ui.enable = true;
 			none-ls.enable = true;
 			friendly-snippets.enable = true;
+			transparent.enable = true;
 		};
 		keymaps = [
 			{
