@@ -59,6 +59,7 @@
     foliate
     gnome-calendar
 		decibels
+		recordbox
 	] ++ lib.optionals (builtins.getEnv "DESKTOP" == "1") [
     ghostty
     firefox
@@ -75,7 +76,6 @@
     onlyoffice-desktopeditors
     impression
     gnome-online-accounts-gtk
-    zrythm
 		(bottles.override { removeWarningPopup = true;})
 		qucs-s
 		spice-up
