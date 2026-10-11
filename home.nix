@@ -78,6 +78,7 @@
     fractal
 		mission-center
 		gaphor
+		video-downloader
 		networkmanagerapplet
 		anyrun
 		awww
