@@ -118,6 +118,7 @@
 	] ++ lib.optionals (builtins.getEnv "DESKTOP" == "1") [
     ## CLI
 		nix-index
+		nixfmt
     unzip
     postgresql
 		rsync
@@ -132,6 +133,9 @@
 		pywal16
 		wallust
 		matugen
+		wineWow64Packages.staging
+		winetricks
+		scrcpy
     # Interpreters and compilers
     python3
     gcc
