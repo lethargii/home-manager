@@ -90,6 +90,7 @@
     gnome-contacts
 		folio
 		epiphany
+		proton-vpn
     ] ++ lib.optionals (builtins.getEnv "GAMING" == "1") [
 		## Games
     adwsteamgtk
