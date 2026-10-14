@@ -27,7 +27,7 @@
 
 	services = {
 		protonmail-bridge.enable = true;
-	}
+	};
 
 
 	nixpkgs.config.allowUnfree = true;
