@@ -67,6 +67,7 @@
     fractal
 		mission-center
 		gaphor
+		gnome-decoder
 		video-downloader
 		networkmanagerapplet
 		anyrun
