@@ -18,6 +18,7 @@
     	});
   	})
 	];
+
   home.username = builtins.getEnv "USER";
   home.homeDirectory = "/home/${config.home.username}";
 
@@ -41,6 +42,12 @@
     gnome-calendar
 		decibels
 		recordbox
+    snapshot
+		fotema
+		loupe
+    showtime
+    fractal
+		cobang
 	] ++ lib.optionals (builtins.getEnv "DESKTOP" == "1") [
     ghostty
     firefox
@@ -64,7 +71,6 @@
 		ironbar
 		swaynotificationcenter
     swayosd
-    fractal
 		mission-center
 		gaphor
 		gnome-decoder
@@ -74,9 +80,7 @@
 		awww
 	] ++ lib.optionals (builtins.getEnv "PHONE" == "1") [
     ptyxis
-    showtime
     gnome-clocks
-    snapshot
     gnome-contacts
 		folio
 		epiphany
@@ -127,6 +131,8 @@
 		wineWow64Packages.staging
 		winetricks
 		scrcpy
+		psmisc
+		v4l-utils
     # Interpreters and compilers
     python3
     gcc
