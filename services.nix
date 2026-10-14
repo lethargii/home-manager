@@ -6,6 +6,7 @@
 			enable = true;
 			#style = ./swaync/style.css;
 		};
+		swayosd.enable = true;
 	};
 
 	systemd.user.services.ironbar = {
