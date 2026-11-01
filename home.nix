@@ -81,6 +81,7 @@
       epiphany
       proton-vpn
       android-tv-remote
+      nano
     ]
     ++ lib.optionals (builtins.getEnv "GAMING" == "1") [
       ## Games
