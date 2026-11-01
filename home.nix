@@ -5,10 +5,14 @@
   ...
 }:
 {
-  imports = lib.optionals (builtins.getEnv "DESKTOP" == "1") [
-    ./nvim.nix
-    ./nvim_colors.nix
-  ];
+  imports =
+    lib.optionals (builtins.getEnv "DESKTOP" == "1") [
+      ./nvim.nix
+      ./nvim_colors.nix
+    ]
+    ++ lib.optionals (builtins.getEnv "PHONE" == "1") [
+      ./phone.nix
+    ];
 
   home.username = builtins.getEnv "USER";
   home.homeDirectory = "/home/${config.home.username}";
