@@ -1,0 +1,26 @@
+/*
+* GTK Colors
+* Generated with Matugen
+*/
+
+@define-color accent_color {{colors.primary_fixed_dim.default.rgba}};
+@define-color accent_fg_color {{colors.on_primary_fixed.default.rgba}};
+@define-color accent_bg_color {{colors.primary_fixed_dim.default.rgba}};
+@define-color window_bg_color {{colors.surface_dim.default.rgba | set_alpha: 0.9}};
+@define-color window_fg_color {{colors.on_surface.default.rgba}};
+@define-color headerbar_bg_color {{colors.surface_dim.default.rgba | set_alpha: 0.9}};
+@define-color headerbar_fg_color {{colors.on_surface.default.rgba}};
+@define-color popover_bg_color {{colors.surface_dim.default.rgba | set_alpha: 0.9}};
+@define-color popover_fg_color {{colors.on_surface.default.rgba}};
+@define-color view_bg_color {{colors.surface.default.rgba | set_alpha: 0.9}};
+@define-color view_fg_color {{colors.on_surface.default.rgba}};
+@define-color card_bg_color {{colors.surface.default.rgba | set_alpha: 0.9}};
+@define-color card_fg_color {{colors.on_surface.default.rgba}};
+@define-color sidebar_bg_color @window_bg_color;
+@define-color sidebar_fg_color @window_fg_color;
+@define-color sidebar_border_color @window_bg_color;
+@define-color sidebar_backdrop_color @window_bg_color;
+
+.messagedialog {
+	background-color: {{colors.surface_dim.default.rgba | set_alpha: 0.9}};
+}

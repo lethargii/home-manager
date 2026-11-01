@@ -61,12 +61,8 @@ window-rule {
   open-maximized-to-edges false
 	background-effect {
 		blur true
+		xray false
 	}
-}
-
-window-rule {
-	match title=r#"TP"#
-	open-floating true
 }
 
 window-rule {
@@ -100,7 +96,7 @@ window-rule {
 }
 
 window-rule {
-  match app-id=r#"geary"#
+  match app-id=r#"Convey"#
   open-on-workspace "4"
   open-maximized true
 }
@@ -134,10 +130,15 @@ window-rule {
 	open-maximized true
 }
 
-spawn-at-startup "geary"
+spawn-at-startup "convey"
 spawn-at-startup "anyrun" "daemon"
 
 spawn-at-startup "xfce4-power-manager"
+spawn-at-startup "ironbar"
+spawn-at-startup "swaync" "--skip-system-css"
+spawn-at-startup "swayosd-server"
+spawn-at-startup "awww-daemon"
+
 
 hotkey-overlay {
   skip-at-startup
@@ -225,6 +226,6 @@ binds {
     Alt+Print { screenshot-window; }
 
     Mod+Shift+E { quit; }
-    Ctrl+Alt+Delete { spawn "flatpak" "run" "io.missioncenter.MissionCenter"; }
+    Ctrl+Alt+Delete { spawn "missioncenter"; }
     Mod+Shift+P { power-off-monitors; }
 }

@@ -8,12 +8,21 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-		nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     nixvim.url = "github:nix-community/nixvim";
+    openmw-nix = {
+      url = "git+https://codeberg.org/PopeRigby/openmw-nix.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    { nixpkgs, home-manager, nix-flatpak, nixvim, ... }:
+    {
+      nixpkgs,
+      home-manager,
+      nixvim,
+      openmw-nix,
+      ...
+    }:
     let
       arch = builtins.getEnv "ARCH";
       pkgs = nixpkgs.legacyPackages.${arch};
@@ -21,12 +30,27 @@
     in
     {
       homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
-				inherit pkgs;
-				extraSpecialArgs = { inherit nix-flatpak; };
+        inherit pkgs;
         modules = [
-					nixvim.homeModules.nixvim
-					./home.nix
-				];
+          nixvim.homeModules.nixvim
+          ./home.nix
+          (
+            { pkgs, lib, ... }:
+            {
+              home.packages =
+                with openmw-nix.packages.x86_64-linux;
+                lib.optionals (builtins.getEnv "GAMING" == "1") [
+                  umo
+                  momw-configurator
+                  delta-plugin
+                  groundcoverify
+                  s3lightfixes
+                  openmw-validator
+                ];
+
+            }
+          )
+        ];
       };
     };
 }
