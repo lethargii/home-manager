@@ -1,8 +1,4 @@
 {
-  config,
-  pkgs,
-  lib,
-  nix-flatpak,
   ...
 }:
 {
@@ -14,7 +10,6 @@
       			local base16 = require("mini.base16")
       			local palette = assert(loadfile(vim.fn.expand("~/.cache/hellwal/nvim_colors.lua")))()
 
-      			-- mini.base16 attend des couleurs "#rrggbb"
       			for k, v in pairs(palette) do
       				if type(v) == "string" and not v:find("^#") then
       					palette[k] = "#" .. v

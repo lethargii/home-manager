@@ -28,7 +28,6 @@
     [
       # GUI
       nautilus
-      geary
       convey
       papers
       foliate

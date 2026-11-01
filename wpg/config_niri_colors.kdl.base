@@ -1,8 +1,0 @@
-layout {{
-  border {{
-    on
-    width 4
-    active-color "{color4}"
-    inactive-color "{color0}"
-  }}
-}}
