@@ -172,7 +172,8 @@
     ".config/ghostty/config.ghostty".source = ./ghostty/config.ghostty;
     ".config/niri/config.kdl".source = ./niri/config.kdl;
     ".config/tmux/tmux.conf".source = ./tmux/tmux.conf;
-    ".config/matugen/config.toml".source = ./matugen/config.toml;
+    ".config/matugen/config.toml".source =
+      if (builtins.getEnv "PHONE" == "1") then ./matugen/config_phone.toml else ./matugen/config.toml;
     ".config/matugen/templates/firefox-colors.css".source = ./matugen/firefox-colors.css;
     ".config/matugen/templates/ghostty".source = ./matugen/ghostty;
     ".config/matugen/templates/gnome-shell.css".source = ./matugen/gnome-shell.css;
