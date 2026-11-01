@@ -187,6 +187,8 @@
     ".config/matugen/templates/steam.css".source = ./matugen/steam.css;
     ".config/matugen/templates/vscode-colors".source = ./matugen/vscode-colors;
     ".config/matugen/templates/vscode-colors.json".source = ./matugen/vscode-colors.json;
+    ".config/matugen/post-hook-scripts/gtk-themes-reload.sh".source = ./matugen/gtk-themes-reload.sh;
+    ".themes/Material-Gnome/index.theme".source = ./matugen/index.theme;
   };
 
   home.sessionVariables = {
